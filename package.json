@@ -5,7 +5,7 @@
   "description": "A toolkit for making adventure games with a character controller, dialogue system, procedural tile map and simple physics puzzle.",
   "unity": "2022.3",
   "unityRelease": "10f1",
-  "documentationUrl": "https://example.com/",
+  "documentationUrl": "https://docs.google.com/document/d/16rAhSfmFYAyR5k0R7keGO9cqrnORsyXaHgbPM1COzbM/edit?usp=sharing",
   "changelogUrl": "https://example.com/changelog.html",
   "licensesUrl": "https://example.com/licensing.html",
   "dependencies": {
@@ -17,13 +17,13 @@
   "keywords": [
     "character",
     "controller",
-    "toolkit", 
+    "toolkit",
     "dialogue"
   ],
   "samples": [
     {
       "displayName": "SampleScene",
-      "description": "A demo of the features in the toolkit",
+      "description": "A scene that displays some of the features in the toolkit",
       "path": "Samples~/SamplesStandard/Samples"
     }
   ],
