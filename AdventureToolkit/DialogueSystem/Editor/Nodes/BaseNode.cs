@@ -21,7 +21,6 @@ public class BaseNode : Node
     
     public virtual void Initialize(Vector2 position)
     {
-        
         nodeType = "NodeType";
         customNodeName = "CustomNodeName";
         choices = new List<ChoiceData>();

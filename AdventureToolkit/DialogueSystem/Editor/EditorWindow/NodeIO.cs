@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class NodeIO
 {
-    DialogueGraphView graphView;
+    private DialogueGraphView graphView;
 
     public NodeIO(DialogueGraphView dialogueGraphView)
     {
@@ -52,18 +52,12 @@ public class NodeIO
     public void Load(DialogueSO dialogue)
     {
         graphView.DeleteElements(graphView.graphElements.ToList());
-        foreach (var nodeDataSO in dialogue.nodesData) {
+        foreach (var nodeDataSO in dialogue.nodesData) 
+        {
             BaseNode newNode = CreateNode(nodeDataSO);
             newNode.RefreshExpandedState();
-            //Debug.Log(nodeDataSO.graphPositionData + nodeDataSO.nodeTypeData + "Node");
-            //BaseNode baseNode = graphView.CreateNode(nodeDataSO.graphPositionData, nodeDataSO.nodeTypeData+"Node");
-            //SetBaseNode(baseNode, nodeDataSO);
-            //graphView.AddElement(baseNode);
-
-
-
-
         }
+        
         foreach (BaseNode node in graphView.nodes) 
         {
             foreach (ChoiceData choiceData in node.choices)

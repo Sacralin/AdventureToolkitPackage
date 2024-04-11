@@ -19,13 +19,6 @@ public class MouseLook : MonoBehaviour
         inputActions.CharacterControls.Enable();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Locked; //lock the cursor to the center of the screen
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Vector2 mouseInput = inputActions.CharacterControls.MouseMovement.ReadValue<Vector2>(); //read mouse input

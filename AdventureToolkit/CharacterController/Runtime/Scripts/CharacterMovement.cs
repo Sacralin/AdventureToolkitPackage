@@ -10,7 +10,7 @@ public class CharacterMovement : MonoBehaviour
     private Animator animator;
     private TwoDimentionalAnimationStateController animationStateController;
 
-    private Camera clickAndPointCamera; // this will need to be the active cinemachine camera
+    private Camera clickAndPointCamera; 
     private NavMeshAgent agent;
 
     public bool pointAndClickCameraOnly;
@@ -62,8 +62,6 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         isGrounded = characterController.isGrounded;
         if (inputActions.CharacterControls.Walk.triggered)
         {
@@ -71,27 +69,14 @@ public class CharacterMovement : MonoBehaviour
             {
                 agent.enabled = false;
                 characterController.enabled = true;
-                //animator.SetFloat("Velocity Z", 0f);
-                //animationStateController.ChangeVelocity(false, false, false, false, false, 2.0f);
             }
-            
         }
 
         if (characterController.enabled)
         {
-            if (pointAndClickCameraOnly)
-            {
-                HandleCameraRelativeMovementInput();
-                
-            }
-            else
-            {
-                HandleMovementInput();
-            }
-            
+            if (pointAndClickCameraOnly) { HandleCameraRelativeMovementInput(); }
+            else { HandleMovementInput(); }
         }
-
-
         if (jumpEnabled) { HandleJump(); }
         if (crouchEnabled) { Crouch(); }
         if (pointAndClickEnabled) { HandleClickAndPoint(); }
@@ -99,7 +84,6 @@ public class CharacterMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        // inputActions.CharacterControls.SpaceBar.triggered
         if (inputActions.CharacterControls.Jump.triggered)
         {
             if (isGrounded)
@@ -108,7 +92,6 @@ public class CharacterMovement : MonoBehaviour
                 animator.SetBool("isJumping", true);
             }
         }
-        
     }
 
     //this method is called from the jump animation once the animation is complete.
@@ -157,10 +140,7 @@ public class CharacterMovement : MonoBehaviour
                                 (cameraRight * currentInput.x * walkSpeed);
 
         // Apply gravity if not grounded
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y += gravity * Time.deltaTime;
-        }
+        if (!characterController.isGrounded) { moveDirection.y += gravity * Time.deltaTime; }
 
         // Move the character
         characterController.Move(moveDirection * Time.deltaTime); // apply movement to player character
@@ -172,22 +152,13 @@ public class CharacterMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
         }
         
-        if (currentInput != new Vector2(0, 0))
-        {
-            animator.SetFloat("Velocity Z", 0.5f);
-        }
-        else
-        {
-            animator.SetFloat("Velocity Z", 0f);
-        }
-
-
+        if (currentInput != new Vector2(0, 0)) { animator.SetFloat("Velocity Z", 0.5f); }
+        else { animator.SetFloat("Velocity Z", 0f); }
     }
 
 
     private void Crouch()
     {
-        
         if (inputActions.CharacterControls.Crouch.triggered) // if crouch is triggered switch settings 
         {
             animator.SetBool("isCrouched", !isCrouched);
@@ -207,17 +178,10 @@ public class CharacterMovement : MonoBehaviour
                 characterController.enabled = true;
                 agent.enabled = false;
                 animator.SetFloat("Velocity Z", 0f);
-                //animationStateController.ChangeVelocity(false, false, false, false, false, 2.0f);
             }
-            else
-            {
-                animator.SetFloat("Velocity Z", 0.5f);
-                //animationStateController.ChangeVelocity(true, false, false, false, false, 2.0f);
-                //animationStateController.velocityZ = 1;
-            }
+            else { animator.SetFloat("Velocity Z", 0.5f); }
         }
 
-        //!Input.GetMouseButton(0)
         if (inputActions.CharacterControls.LeftMouseClick.ReadValue<float>() == 0) return;
 
         RaycastHit hit;
@@ -229,8 +193,5 @@ public class CharacterMovement : MonoBehaviour
             agent.destination = hit.point;
             
         }
-
-        
-        
     }
 }

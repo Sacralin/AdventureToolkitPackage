@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Code Source: https://www.youtube.com/watch?v=_J8RPIaO2Lc
+//This is not my own work.
 
 public class TwoDimentionalAnimationStateController : MonoBehaviour
 {

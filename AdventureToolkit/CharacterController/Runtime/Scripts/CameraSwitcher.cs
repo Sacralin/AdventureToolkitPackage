@@ -11,8 +11,8 @@ public class CameraSwitcher : MonoBehaviour
     public Camera mainCamera;
     public GameObject firstPersonMouseLookGameObject;
     public GameObject thirdPersonMouseLookGameObject;
-    Animator animator;
-    FirstAndThirdPersonCharacterInputs inputActions; 
+    private Animator animator;
+    private FirstAndThirdPersonCharacterInputs inputActions; 
     private CharacterMovement characterMovement;
 
     // bools for camera switching logic

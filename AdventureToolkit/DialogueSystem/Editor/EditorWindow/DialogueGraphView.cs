@@ -29,7 +29,6 @@ public class DialogueGraphView : GraphView
         {
             node.Update();
             ClearOldEdgeData();
-            //UpdateEdgeData();
         }
         
     }
@@ -79,7 +78,6 @@ public class DialogueGraphView : GraphView
     {
         StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/DialogueSystem/Editor/StyleSheets/GraphViewStyles.uss");
         styleSheets.Add(styleSheet);
-        //add node styles later
     }
 
 
@@ -113,15 +111,18 @@ public class DialogueGraphView : GraphView
         foreach(ChoiceData choice in node.choices) { //itterate over choices
             if (choice.edgeData != null && choice.edgeData.sourceNodeGuid != null && choice.edgeData.targetNodeGuid != null) { //check if edge data is present
                 BaseNode targetNode = new BaseNode(); //target node container
-                foreach (BaseNode nodes in nodes.ToList()) { //get all basenodes in nodes(graphview)
-                    if(choice.edgeData.targetNodeGuid == nodes.GUID) { //find targetnode in graphview
+                foreach (BaseNode nodes in nodes.ToList()) //get all basenodes in nodes(graphview)
+                { 
+                    if(choice.edgeData.targetNodeGuid == nodes.GUID) //find targetnode in graphview
+                    { 
                         targetNode = nodes; //store targetnode
                     }
                 }
                 Port inputPort = targetNode.inputContainer.Children().OfType<Port>().FirstOrDefault();
                 //Port inputPort = (Port)targetNode.inputContainer.ElementAt(0); //nodes only have 1 input so we assign that
                 Port outputPort = (Port)node.outputContainer.ElementAt(choice.index); //assign subject nodes output based on data stored in choices
-                if (outputPort != null && inputPort != null) { //null check
+                if (outputPort != null && inputPort != null) //null check
+                { 
                     Edge edge = new Edge { output = outputPort, input = inputPort }; //create the new edge and assign ports
                     outputPort.Connect(edge); //connect
                     inputPort.Connect(edge); //connect
@@ -147,8 +148,10 @@ public class DialogueGraphView : GraphView
                 // Populate edgedata on parent nodes
                 BaseNode input = (BaseNode)edge.input.node;
                 BaseNode output = (BaseNode)edge.output.node;
-                foreach(ChoiceData choice in output.choices) {
-                    if(choice.portName == edge.output.name) {
+                foreach(ChoiceData choice in output.choices) 
+                {
+                    if(choice.portName == edge.output.name) 
+                    {
                         EdgeData edgeData = new EdgeData();
                         edgeData.sourceNodeGuid = output.GUID; 
                         edgeData.targetNodeGuid = input.GUID;
@@ -165,14 +168,16 @@ public class DialogueGraphView : GraphView
     //clears edge data when nodes are disconnected  
     public void ClearOldEdgeData()
     {
-        foreach (BaseNode node in nodes) {
+        foreach (BaseNode node in nodes) 
+        {
             var outputPorts = node.outputContainer.Query<Port>().ToList();
-            foreach (ChoiceData choice in node.choices) {
-                foreach (var outputPort in outputPorts) {
-                    if (outputPort.name == choice.portName) { // why did i do it this way, i think this is why its not loading properly
-                        if(!outputPort.connected) {
-                            choice.edgeData = new EdgeData();
-                        }
+            foreach (ChoiceData choice in node.choices) 
+            {
+                foreach (var outputPort in outputPorts) 
+                {
+                    if (outputPort.name == choice.portName) 
+                    { 
+                        if(!outputPort.connected) { choice.edgeData = new EdgeData(); }
                     }
                 }
             }
