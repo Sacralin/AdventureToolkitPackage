@@ -74,10 +74,34 @@ public class DialogueGraphView : GraphView
         grid.StretchToParentSize();
     }
 
+    private StyleSheet FindStyleSheet()
+    {
+        List<StyleSheet> listOfStyleSheets = new List<StyleSheet>();
+        string[] assetList = AssetDatabase.FindAssets("t:StyleSheet"); // find all flag stores in project, returns asset GUIDs
+        if (assetList.Length != 0)
+        {
+            foreach (string asset in assetList)
+            {
+                string sheetPath = AssetDatabase.GUIDToAssetPath(asset); // convert GUID into asset path
+                StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>(sheetPath); // load asset from path
+                listOfStyleSheets.Add(styleSheet);
+            }
+        }
+
+        foreach (StyleSheet sheet in listOfStyleSheets)
+        {
+            if (sheet.name == "GraphViewStyles")
+            {
+                return sheet;
+            }
+        }
+        return null;
+    }
+
     private void AddStyles()
     {
-        StyleSheet styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/DialogueSystem/Editor/StyleSheets/GraphViewStyles.uss");
-        styleSheets.Add(styleSheet);
+        StyleSheet sheet = FindStyleSheet();
+        styleSheets.Add(sheet);
     }
 
 
