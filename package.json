@@ -1,6 +1,6 @@
 {
   "name": "com.2322034.adventuretoolkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "adventuretoolkit",
   "description": "A toolkit for making adventure games with a character controller, dialogue system, procedural tile map and simple physics puzzle.",
   "unity": "2022.3",
