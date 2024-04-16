@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f9244a6d702034bac6e5aed2b8167a, type: 3}
+  m_Name: Button1
+  m_EditorClassIdentifier: 
+  nodesData:
+  - nodeTypeData: Start
+    customNodeNameData: CustomNodeName
+    GUIDData: 0ac1b073-f630-45e8-b9b5-262d83d8ed8c
+    graphPositionData: {x: 50, y: 50}
+    choicesData:
+    - indexData: 0
+      choiceData: 
+      portNameData: ce27e65f-1aa3-4374-998e-7d64025fe9f8
+      edgeDataData:
+        sourceNodeGuidData: 0ac1b073-f630-45e8-b9b5-262d83d8ed8c
+        targetNodeGuidData: 6ea35c39-7209-4293-bad2-7800784ab7a1
+    textData: Dialogue Text
+    flagObjectData: 
+    triggerFlagData: 
+    triggerValueData: 
+    eventTypeData: 
+  - nodeTypeData: End
+    customNodeNameData: CustomNodeName
+    GUIDData: 4d8bc802-109f-4ec9-a8b1-8e685bad8dea
+    graphPositionData: {x: 574, y: 50}
+    choicesData: []
+    textData: Dialogue Text
+    flagObjectData: 
+    triggerFlagData: 
+    triggerValueData: 
+    eventTypeData: Do Nothing
+  - nodeTypeData: Event
+    customNodeNameData: CustomNodeName
+    GUIDData: 6ea35c39-7209-4293-bad2-7800784ab7a1
+    graphPositionData: {x: 254, y: 49}
+    choicesData:
+    - indexData: 0
+      choiceData: 
+      portNameData: df18c2e0-9cf2-4b5e-be65-1439db30f988
+      edgeDataData:
+        sourceNodeGuidData: 6ea35c39-7209-4293-bad2-7800784ab7a1
+        targetNodeGuidData: 4d8bc802-109f-4ec9-a8b1-8e685bad8dea
+    textData: Dialogue Text
+    flagObjectData: ExampleSceneFlagList
+    triggerFlagData: Button1
+    triggerValueData: True
+    eventTypeData: Toggle Flag Value
+  currentNode:
+    nodeTypeData: 
+    customNodeNameData: 
+    GUIDData: 
+    graphPositionData: {x: 0, y: 0}
+    choicesData: []
+    textData: 
+    flagObjectData: 
+    triggerFlagData: 
+    triggerValueData: 
+    eventTypeData: 
