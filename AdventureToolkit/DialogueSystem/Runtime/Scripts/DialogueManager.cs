@@ -206,8 +206,11 @@ public class DialogueManager : MonoBehaviour
     private void RunEndNode()
     {
         
-        hasDialogueStarted = false;
-        inputChanged = true;
+        if (hasDialogueStarted)
+        {
+            inputChanged = true;
+            hasDialogueStarted = false;
+        }
         if (currentNode.eventTypeData == "Return To Node")
         {
             foreach (NodeDataSO node in dialogueSO.nodesData) 
