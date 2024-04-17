@@ -20,17 +20,14 @@ public class NodeAndFlagAssetStateManager
 
     public void ResetAllNodeAssets()
     {
-        string[] assetList = AssetDatabase.FindAssets("t:DialogueSO"); 
-        if (assetList.Length != 0)
+        DialogueSO[] assets = Resources.LoadAll<DialogueSO>("DialogueAssets");
+        if (assets.Length != 0)
         {
-            foreach (string asset in assetList)
+            foreach (DialogueSO dialogueSO in assets)
             {
-                string SOpath = AssetDatabase.GUIDToAssetPath(asset); 
-                DialogueSO dialogueSO = AssetDatabase.LoadAssetAtPath<DialogueSO>(SOpath);
                 dialogueSO.currentNode = new NodeDataSO();
             }
         }
-        
     }
 
 

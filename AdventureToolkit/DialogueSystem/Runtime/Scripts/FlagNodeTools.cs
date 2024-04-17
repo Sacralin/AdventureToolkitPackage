@@ -6,15 +6,14 @@ public class FlagNodeTools
     public List<FlagSO> GetAllFlagAssets()
     {
         List<FlagSO> listOfFlagAssets = new List<FlagSO>();
-        string[] assetList = AssetDatabase.FindAssets("t:FlagSO"); // find all flag stores in project, returns asset GUIDs
-        if (assetList.Length != 0)
+        FlagSO[] assets = Resources.LoadAll<FlagSO>("FlagAssets");  // find all flag stores in project, returns asset GUIDs
+        if (assets.Length != 0)
         {
-            foreach (string asset in assetList)
+            foreach (FlagSO asset in assets)
             {
-                string SOpath = AssetDatabase.GUIDToAssetPath(asset); // convert GUID into asset path
-                FlagSO flagSO = AssetDatabase.LoadAssetAtPath<FlagSO>(SOpath); // load asset from path
-                listOfFlagAssets.Add(flagSO);
+                listOfFlagAssets.Add(asset);
             }
+
         }
         return listOfFlagAssets;
     }
