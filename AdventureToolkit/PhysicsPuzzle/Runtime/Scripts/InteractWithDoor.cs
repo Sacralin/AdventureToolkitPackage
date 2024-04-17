@@ -18,6 +18,7 @@ public class InteractWithDoor : MonoBehaviour
         inputActions = new PuzzleInputs();
         inputActions.PuzzleControls.Enable();
         puzzleActive = false;
+        puzzleCamera.Priority = 0;
     }
 
     // Update is called once per frame
