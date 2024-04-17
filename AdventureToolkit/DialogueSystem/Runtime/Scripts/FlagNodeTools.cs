@@ -6,7 +6,7 @@ public class FlagNodeTools
     public List<FlagSO> GetAllFlagAssets()
     {
         List<FlagSO> listOfFlagAssets = new List<FlagSO>();
-        Object[] assets = Resources.LoadAll("", typeof(FlagSO));
+        FlagSO[] assets = Resources.LoadAll<FlagSO>("FlagAssets");  // find all flag stores in project, returns asset GUIDs
         if (assets.Length != 0)
         {
             foreach (FlagSO asset in assets)
