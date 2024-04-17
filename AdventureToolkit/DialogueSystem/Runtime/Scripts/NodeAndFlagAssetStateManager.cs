@@ -20,7 +20,7 @@ public class NodeAndFlagAssetStateManager
 
     public void ResetAllNodeAssets()
     {
-        DialogueSO[] assets = Resources.LoadAll<DialogueSO>("DialogueAssets");
+        Object[] assets = Resources.LoadAll("", typeof(DialogueSO));
         if (assets.Length != 0)
         {
             foreach (DialogueSO dialogueSO in assets)
